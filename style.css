@@ -1,0 +1,124 @@
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-family: Arialw, Helvetica, sans-serif;
+  //outline: 1px dashed red;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+/* Header */
+.header {
+  position: static;
+  display: grid;
+  background: #ccc;
+  grid-template-columns: auto 10px 1fr auto 10px;
+  height: 3rem;
+  width: 100%;
+}
+
+/* Video Section */
+.video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: black;
+}
+
+.video #video {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* Tabs */
+
+.tabs {
+  height: 100%;
+  display: grid;
+  background: none;
+  grid-template-rows: 3rem 1fr;
+}
+
+.tabs .switch {
+  display: grid;
+  grid-template-columns: auto auto;
+  background: moccasin;
+}
+
+.tabs .switch .switchx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 1px solid red;
+  padding: 3px;
+  box-sizing: border-box;
+  margin: 1px;
+}
+
+/* Tab Content */
+.tabs .tab {
+  display: grid;
+  height: 100%;
+  background: lightskyblue;
+  grid-template-columns: 100% 100%;
+  overflow-x: scroll;
+}
+
+.tabs .tab .tab-chat {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background: pink;
+}
+
+.tabs .tab .tab-chat .chat-messages {
+  height: 100%;
+  width: 100%;
+  background: lightgrey;
+  box-sizing: border-box;
+  position: relative;
+  transition: 0.3s ease;
+} 
+
+.tabs .tab .tab-chat .chat-messages .messages {
+  position: absolute;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  
+}
+
+.tab .tab-chat .chat-typingbox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 20%;
+  padding-bottom: env(keyboard-inset-height, 0);
+  background: white;
+  transition: 0.3s ease-in-out;
+}
+
+.tab #tab-chat .chat-typingbox .chat-typingbox-input {
+  box-sizing: border-box;
+  font-size: 1rem;
+  height: 80%;
+  padding: 1rem;
+  outline: none;
+  resize: none;
+}
+
+.tab #tab-chat .chat-typingbox .chat-typingbox-send {
+  background: ghostwhite;
+  user-select: none;
+}

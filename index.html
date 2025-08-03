@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+  <script defer>
+    let vk = 'virtualKeyboard' in navigator;
+    let x = 0;
+    let y = 0;
+    let width = 0;
+    let height = 1;
+    if (vk){
+      navigator.virtualKeyboard.overlaysContent = true
+      navigator.virtualKeyboard.addEventListener('geometrychange', (event) => {({ x, y, width, height } = event.target.boundingRect);});
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const sendBtn = document.getElementById('chat-typingbox-send');
+      sendBtn.ontouchend = (e) => {e.preventDefault();if (!height && vk) sendBtn.focus();};
+      });
+    </script>
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://files.catbox.moe/fzkx2d.css" type="text/css" media="all">
+  <title>Sync</title>
+</head>
+<body>
+  <div class="header">
+    <div class="menu">MENU</div>
+    <div class="GAP"></div>
+    <div class="title">HIHIHI</div>
+    <div class="profile">lmao</div>
+    <div class="GAP"></div>
+  </div>
+  <div class="video">
+    <video id="video" src="vid.mp4" muted autoplay loop></video>
+  </div>
+  <div class="tabs">
+    <div class="switch">
+      <div id="switch-chat" class="switchx">Chat</div>
+      <div id="switch-setup" class="switchx">setup</div>
+    </div>
+    <div class="tab">
+      <div class="tab-chat" id="tab-chat">
+        <div id="chat-messages" class="chat-messages">
+          <div class="messages" id="messages"></div>
+        </div>
+        <div id="chat-typingbox" class="chat-typingbox">
+          <textarea name="chat" id="chat-typingbox-input" class="chat-typingbox-input" virtualkeyboardpolicy="auto" placeholder="Type a message"></textarea>
+          <button class="chat-typingbox-send" id="chat-typingbox-send">send</button>
+        </div>
+      </div>
+      <div id="tab-setup">
+        Hiii
+      </div>
+    </div>
+  </div>
+  <div id="debug" style="position: fixed; top: 50%; left: 50%;">
+    Hi
+  </div>
+<script type="text/javascript" charset="utf-8">
+  const chatBox = document.getElementById('messages');
+  const debug = document.getElementById('debug')
+  const rever = new ResizeObserver(entries => {
+    for (const entry of entries) {
+      const { width, height } = entry.contentRect;
+    }
+  });
+  
+  chatBox.onscroll = () => {
+    debug.innerText = chatBox.scrollHeight 
+  }
+  for (let i = 1; i <= 50; i++) {
+    const msg = document.createElement('div');
+    msg.textContent = `Message #${i}`;
+    msg.style.padding = '0.5rem';
+    chatBox.appendChild(msg);
+  }
+</script>
+</body>
+
+</html>
