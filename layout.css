@@ -4,7 +4,8 @@
   border: 0;
   font-family: Arialw, Helvetica, sans-serif;
   font-variant: small-caps;
-  text-transform: lowercase;
+  //text-transform: lowercase;
+  border: 1px red dashed;
 }
 
 html {
@@ -97,22 +98,33 @@ body {
 }
 
 .tab .tab-chat .chat-typingbox {
-  display: grid;
-  grid-template-columns: 1fr 20%;
+  display: flex;
+  position: relative;
   width: 100%;
-  padding-bottom: env(keyboard-inset-height, 0);
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: 0.7rem;
+  padding-left: 0.5rem;
+  padding-bottom: calc(env(keyboard-inset-height, 0) + 10px);
 }
 
 .tab #tab-chat .chat-typingbox .chat-typingbox-input {
+  flex: 1;
   font-size: 1rem;
   box-sizing: border-box;
-  height: 80%;
-  padding: 1rem;
   resize: none;
   outline: none;
+  height: 70%;
+  padding-right: 6rem;
+  padding-left: 1rem;
 }
 
 .tab #tab-chat .chat-typingbox .chat-typingbox-send {
   user-select: none;
-  background: inherit;
-}
+  position: absolute;
+  right: 1rem;
+  //bottom: 30%;
+  height: 2rem;
+  aspect-ratio: 1;
+} 

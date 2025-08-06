@@ -73,7 +73,7 @@ body {
 .chat-typingbox {
   background: #fff;
   border-top: 1px solid #ddd;
-  padding: 0.5rem;
+  //padding: 0.5rem;
 }
 
 .chat-typingbox-input {
@@ -88,18 +88,7 @@ body {
   outline: none;
 }
 
-.chat-typingbox-send {
-  background: var(--accent);
-  color: white;
-  border-radius: var(--radius);
-  margin-left: 0.5rem;
-  transition: background 0.3s;
-  font-weight: bold;
-}
 
-.chat-typingbox-send:hover {
-  background: #ff571f;
-}
 
 /* Video Area */
 .video {
@@ -110,7 +99,7 @@ body {
 
 .video #video {
   border-radius: var(--radius);
-  object-fit: cover;
+  //object-fit: cover;
 }
 
 /* Scrollbar Styling */
@@ -123,4 +112,30 @@ body {
 }
 .messages::-webkit-scrollbar-track {
   background: #eee;
+}
+
+.chat-typingbox-send {
+  background: #ff7b54;               /* Vibrant primary color */
+  color: white;                      /* Text color */
+  font-weight: bold;
+  border: none;                      /* Remove default border */
+  border-radius: 0.75rem;            /* Rounded corners */
+  cursor: pointer;                   /* Pointer cursor on hover */
+  transition: background 0.3s, transform 0.1s;
+  padding: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.chat-typingbox-send:hover {
+  background: #ff571f;               /* Darker on hover */
+}
+
+.chat-typingbox-send:active {
+  transform: scale(0.97);            /* Click feedback */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
