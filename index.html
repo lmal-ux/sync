@@ -7,19 +7,31 @@
   <script defer>
     let vk = 'virtualKeyboard' in navigator;
     let x = 0, y = 0, width = 0, height = 1;
+  
     if (vk){navigator.virtualKeyboard.overlaysContent = true; navigator.virtualKeyboard.addEventListener('geometrychange', (event) => {({ x, y, width, height } = event.target.boundingRect);});}
-    document.addEventListener('DOMContentLoaded', () => {const sendBtn = document.getElementById('chat-typingbox-send');sendBtn.ontouchend = (e) => {e.preventDefault();if (!height && vk) {sendBtn.focus()}; sendBtn.dispatchEvent(new Event('click'))};});
-  </script> 
+    
+    let r = 0, q = [];
+    document.addEventListener('DOMContentLoaded', () => { r = 1; q.forEach(f => f()); q = [] });
+    window.odr = f => r ? f() : q.push(f);
+    
+    odr(() => {const sendBtn = document.getElementById('chat-typingbox-send');sendBtn.ontouchend = (e) => {e.preventDefault();if (!height && vk) {sendBtn.focus()}; sendBtn.dispatchEvent(new Event('click'))};});
+
+    odr(()=>{const chatBox = document.getElementById('messages'); 
+    let chatBoxHeight = null, chatBoxScrollHeight = null, chatBoxScrollTop = null; 
+    chatBox.addEventListener('scroll',() => {chatBoxScrollTop = chatBox.scrollTop})
+    new ResizeObserver(entries => {for (const entry of entries) {const actScrollHeight = chatBox.scrollHeight - chatBox.clientHeight, diff = chatBoxHeight - chatBox.clientHeight, hidden = actScrollHeight - Math.round(chatBox.scrollTop);if (chatBoxHeight) {if (hidden <= 2){chatBox.scrollTop = chatBoxScrollTop - Math.abs(diff)}else {chatBox.scrollTop = Math.min(chatBox.scrollTop + diff, actScrollHeight)}};chatBoxHeight = chatBox.clientHeight;chatBoxScrollHeight = actScrollHeight}}).observe(chatBox)})
+  </script>
+  
   <link rel="stylesheet" href="style.css" type="text/css" media="all" />
   <title>Sync</title>
 </head>
 <body>
   <div class="header">
     <div class="menu">MENU</div>
-    <div class="GAP"></div>
+    <div class="gap"></div>
     <div class="title">HIHIHI</div>
     <div class="profile">lmao</div>
-    <div class="GAP"></div>
+    <div class="gap"></div>
   </div>
   <div class="video">
     <video id="video" src="vid.mp4" muted autoplay loop></video>
@@ -44,48 +56,10 @@
       </div>
     </div>
   </div>
-  <div id="debug" style="position: fixed; display: flex; top:50%; pointer-events: none; height: 100%; width:100%; justify-content: center; align-content: center; font-size: 10px; "></div>
   
   
 <script type="text/javascript" charset="utf-8">
   const chatBox = document.getElementById('messages');
-  const chatBoxSend = document.getElementById('chat-typingbox-send')
-  const debug = document.getElementById('debug');
-  let chatBoxHeight = null;
-  let chatBoxScrollHeight = null;
-  //chatBox.onscroll = () => {debug.innerText = chatBox.scrollTop}
-  let a = 0 ,b = 0
-  function lmao (){
-    if (!a) { a = chatBox.scrollTop; debug.innerText = chatBox.scrollTop;}
-    else if (!b) {b = chatBox.scrollTop; debug.innerText = chatBox.scrollTop;}
-    else if(a && b) {debug.innerText = b - a}
-  };
-  chatBoxSend.onclick = lmao
-  window.ondblclick = () => {a = 0; b = 0; debug.innerText = 'reset'}
-  const rever = new ResizeObserver(entries => {
-    for (const entry of entries) {
-      const { width, height } = entry.contentRect;
-      const actScrollHeight = chatBox.scrollHeight - chatBox.clientHeight
-      const roundedScrollTop = Math.round(chatBox.scrollTop)
-      const diff = chatBoxHeight - chatBox.clientHeight
-      const hidden = actScrollHeight - roundedScrollTop
-      const absDiff = Math.abs(diff)
-      
-      if (chatBoxHeight) {
-        if (0 < diff && (absDiff >= (actScrollHeight - roundedScrollTop))){
-          chatBox.scrollTop += diff + absDiff
-          return 
-        }
-      
-        chatBox.scrollTop = Math.min(chatBox.scrollTop + diff , actScrollHeight)
-        }
-      chatBoxHeight = chatBox.clientHeight
-      chatBoxScrollHeight = actScrollHeight
-    }
-  });
-  
-  rever.observe(chatBox)
-  
   
   for (let i = 1; i <= 50; i++) {
     const msg = document.createElement('div');
