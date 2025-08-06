@@ -20,7 +20,6 @@
     chatBox.addEventListener('scroll',() => {chatBoxScrollTop = chatBox.scrollTop})
     new ResizeObserver(entries => {for (const entry of entries) {const actScrollHeight = chatBox.scrollHeight - chatBox.clientHeight, diff = chatBoxHeight - chatBox.clientHeight, hidden = actScrollHeight - Math.round(chatBox.scrollTop);if (chatBoxHeight) {if (hidden <= 2){chatBox.scrollTop = chatBoxScrollTop - Math.abs(diff)}else {chatBox.scrollTop = Math.min(chatBox.scrollTop + diff, actScrollHeight)}};chatBoxHeight = chatBox.clientHeight;chatBoxScrollHeight = actScrollHeight}}).observe(chatBox)})
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond+SC&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="layout.css" type="text/css" media="all" />
   <link rel="stylesheet" href="style.css" type="text/css" media="all" />
   <title>Sync</title>
