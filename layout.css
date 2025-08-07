@@ -1,3 +1,7 @@
+:root {
+  --gap: 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +27,7 @@ body {
 .header {
   display: grid;
   position: static;
-  grid-template-columns: auto 10px 1fr auto 10px;
+  grid-template-columns: var(--gap) auto var(--gap) 1fr auto var(--gap);
   height: 3rem;
   width: 100%;
 }

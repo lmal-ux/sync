@@ -27,10 +27,11 @@
 </head>
 <body>
   <div class="header">
-    <div class="menu">MENU</div>
     <div class="gap"></div>
-    <div class="title">HIHIHI</div>
-    <div class="profile">lmao</div>
+    <div class="menu"><span></span><span></span><span></span></div>
+    <div class="gap"></div>
+    <div class="title"><img class="logo" src="icons/logo.png" alt="Flowline" style=" height:1rem; width: auto;"/></div>
+    <div class="profile"><img src="https://i.ibb.co/Kz9XFs02/cat.jpg" alt="avatar" id="avatar" class="avatar" loading="lazy" style="height: 3rem;width: 3rem; padding: 3px; border-radius: 50%; box-sizing: border-box;"></div>
     <div class="gap"></div>
   </div>
   <div class="video">
@@ -66,7 +67,7 @@
   for (let i = 1; i <= 50; i++) {
     const msg = document.createElement('div');
     msg.textContent = `Message #${i}`;
-    msg.style.padding = '0.5rem';
+    msg.classList.add('message')
     chatBox.appendChild(msg);
   }
   
