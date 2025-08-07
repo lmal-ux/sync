@@ -18,7 +18,7 @@
     odr(()=>{const chatBox = document.getElementById('chat-messages'); 
     let chatBoxHeight = null, chatBoxScrollHeight = null, chatBoxScrollTop = null; 
     chatBox.addEventListener('scroll',() => {chatBoxScrollTop = chatBox.scrollTop})
-    new ResizeObserver(entries => {for (const entry of entries) {const actScrollHeight = chatBox.scrollHeight - chatBox.clientHeight, diff = chatBoxHeight - chatBox.clientHeight, hidden = actScrollHeight - Math.round(chatBox.scrollTop);if (chatBoxHeight) {if (hidden <= 2){chatBox.scrollTop = chatBoxScrollTop - Math.abs(diff)}else {chatBox.scrollTop = Math.min(chatBox.scrollTop + diff, actScrollHeight)}};chatBoxHeight = chatBox.clientHeight;chatBoxScrollHeight = actScrollHeight}}).observe(chatBox)})
+    new ResizeObserver(entries => {for (const entry of entries) {const actScrollHeight = chatBox.scrollHeight - chatBox.clientHeight, diff = chatBoxHeight - chatBox.clientHeight, hidden = actScrollHeight - Math.round(chatBox.scrollTop);if (chatBoxHeight) {if (0 > diff && hidden <= 2){chatBox.scrollTop = chatBoxScrollTop - Math.abs(diff)}else {chatBox.scrollTop = Math.min(chatBox.scrollTop + diff, actScrollHeight)}};chatBoxHeight = chatBox.clientHeight;chatBoxScrollHeight = actScrollHeight}}).observe(chatBox)})
     odr(() => {const chatInput = document.getElementById('chat-typingbox-input');chatInput.addEventListener('input', () => {chatInput.style.height = 'auto';chatInput.style.height = chatInput.scrollHeight + 'px'; chatInput.selectionStart === chatInput.value.length ? chatInput.scrollTop = chatInput.scrollHeight : null});})
   </script>
   <link rel="stylesheet" href="layout.css" type="text/css" media="all" />
