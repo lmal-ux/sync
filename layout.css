@@ -4,8 +4,8 @@
   border: 0;
   font-family: Arialw, Helvetica, sans-serif;
   font-variant: small-caps;
-  //text-transform: lowercase;
-  border: 1px red dashed;
+  text-transform: lowercase;
+  //border: 1px red dashed;
 }
 
 html {
@@ -101,30 +101,40 @@ body {
   display: flex;
   position: relative;
   width: 100%;
-  justify-content: center;
-  align-items: center;
   box-sizing: border-box;
-  padding-right: 0.7rem;
-  padding-left: 0.5rem;
-  padding-bottom: calc(env(keyboard-inset-height, 0) + 10px);
+  padding: 0.5rem 1rem 0 1rem;
+  padding-bottom: calc(env(keyboard-inset-height, 0) + 1rem);
+  
 }
 
 .tab #tab-chat .chat-typingbox .chat-typingbox-input {
+  
   flex: 1;
   font-size: 1rem;
-  box-sizing: border-box;
+  font-variant: none;
+  text-transform: none;
   resize: none;
   outline: none;
-  height: 70%;
+  min-height: 2.6rem;
+  max-height: 5rem;
   padding-right: 6rem;
   padding-left: 1rem;
+  padding-top: 0.7rem; 
+  padding-bottom: 0.7rem;
+  border: 1px red solid;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  vertical-align: middle;
 }
 
 .tab #tab-chat .chat-typingbox .chat-typingbox-send {
   user-select: none;
+  display: flex;
   position: absolute;
-  right: 1rem;
-  //bottom: 30%;
+  right: 1.5rem;
+  bottom: 1.35rem;
   height: 2rem;
-  aspect-ratio: 1;
+  border-radius: 50%;
+  background: none;
+  
 } 
