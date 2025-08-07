@@ -15,14 +15,14 @@
     
     odr(() => {const sendBtn = document.getElementById('chat-typingbox-send');sendBtn.ontouchend = (e) => {e.preventDefault();if (!height && vk) {sendBtn.focus()}; sendBtn.dispatchEvent(new Event('click'))};});
 
-    odr(()=>{const chatBox = document.getElementById('messages'); 
+    odr(()=>{const chatBox = document.getElementById('chat-messages'); 
     let chatBoxHeight = null, chatBoxScrollHeight = null, chatBoxScrollTop = null; 
     chatBox.addEventListener('scroll',() => {chatBoxScrollTop = chatBox.scrollTop})
     new ResizeObserver(entries => {for (const entry of entries) {const actScrollHeight = chatBox.scrollHeight - chatBox.clientHeight, diff = chatBoxHeight - chatBox.clientHeight, hidden = actScrollHeight - Math.round(chatBox.scrollTop);if (chatBoxHeight) {if (hidden <= 2){chatBox.scrollTop = chatBoxScrollTop - Math.abs(diff)}else {chatBox.scrollTop = Math.min(chatBox.scrollTop + diff, actScrollHeight)}};chatBoxHeight = chatBox.clientHeight;chatBoxScrollHeight = actScrollHeight}}).observe(chatBox)})
     odr(() => {const chatInput = document.getElementById('chat-typingbox-input');chatInput.addEventListener('input', () => {chatInput.style.height = 'auto';chatInput.style.height = chatInput.scrollHeight + 'px'; chatInput.selectionStart === chatInput.value.length ? chatInput.scrollTop = chatInput.scrollHeight : null});})
   </script>
   <link rel="stylesheet" href="layout.css" type="text/css" media="all" />
-  <!--link rel="stylesheet" href="style.css" type="text/css" media="all" /-->
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
   <title>Sync</title>
 </head>
 <body>
@@ -37,21 +37,21 @@
     <video id="video" src="vid.mp4" muted autoplay loop></video>
   </div>
   <div class="tabs">
-    <div class="switch">
-      <div id="switch-chat" class="switchx">Chat</div>
-      <div id="switch-setup" class="switchx">setup</div>
+    <div class="switches">
+      <div id="switch-chat" class="switch">chat</div>
+      <div id="switch-setup" class="switch">setup</div>
     </div>
     <div class="tab">
       <div class="tab-chat" id="tab-chat">
-        <div id="chat-messages" class="chat-messages">
-          <div class="messages" id="messages"></div>
+        <div id="chat-messages-container" class="chat-messages-container">
+          <div class="chat-messages" id="chat-messages"></div>
         </div>
         <div id="chat-typingbox" class="chat-typingbox">
           <textarea name="chat" id="chat-typingbox-input" class="chat-typingbox-input" rows="1" placeholder="Message"></textarea>
-          <button class="chat-typingbox-send" id="chat-typingbox-send"><img src="icons/send-btn.svg" alt="send" /></button>
+          <button class="chat-typingbox-send" id="chat-typingbox-send"><img src="icons/send-btn.svg" alt="send" id="send-btn-img"/></button>
         </div>
       </div>
-      <div id="tab-setup">
+      <div id="tab-setup" class="tab-setup">
         Hiii
       </div>
     </div>
@@ -59,7 +59,7 @@
   
   
 <script type="text/javascript" charset="utf-8">
-  const chatBox = document.getElementById('messages');
+  const chatBox = document.getElementById('chat-messages');
  
   
   
