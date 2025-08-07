@@ -70,7 +70,7 @@ body {
 .logo {
   height: 1rem;
   width: auto;
-  mix-blend-mode: darken
+  mix-blend-mode: darken;
   
 }
 
@@ -101,12 +101,16 @@ body {
   padding: 10px 14px;
   margin: 8px 0;
   border-radius: 10px;
-  max-width: 80%;
-  font-size: 14px;
+  height: auto;
+  width: fit-content;
+  max-width: 70%;
   word-break: break-word;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
+.mymsg {
+  align-self: flex-end;
+}
 /* ===== Chat Input Area ===== */
 .chat-typingbox {
   background: #f0f2f7;

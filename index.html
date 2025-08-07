@@ -12,7 +12,7 @@
     let r = 0, q = [];
     document.addEventListener('DOMContentLoaded', () => { r = 1; q.forEach(f => f()); q = [] });
     window.odr = f => r ? f() : q.push(f);
-    
+    window.odrx = f => null;
     odr(() => {const sendBtn = document.getElementById('chat-typingbox-send');sendBtn.ontouchend = (e) => {e.preventDefault();if (!height && vk) {sendBtn.focus()}; sendBtn.dispatchEvent(new Event('click'))};});
 
     odr(()=>{const chatBox = document.getElementById('chat-messages'); 
@@ -61,8 +61,8 @@
   
 <script type="text/javascript" charset="utf-8">
   const chatBox = document.getElementById('chat-messages');
- 
-  
+  const sendBtn = document.getElementById('chat-typingbox-send')
+  const input = document.getElementById('chat-typingbox-input')
   
   for (let i = 1; i <= 50; i++) {
     const msg = document.createElement('div');
@@ -70,6 +70,18 @@
     msg.classList.add('message')
     chatBox.appendChild(msg);
   }
+  
+  sendBtn.onclick = () => {
+    const val = input.value.trim()
+    if (!val) return;
+    const msg = document.createElement('div');
+    msg.textContent = val
+    msg.classList.add('message','mymsg')
+    chatBox.appendChild(msg);
+    input.value = ''
+    chatBox.scrollTop = chatBox.scrollHeight
+  }
+  
   
 </script> 
 </body>
